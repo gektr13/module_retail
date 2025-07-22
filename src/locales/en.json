@@ -1,0 +1,14 @@
+{
+  "sign_document": "Sign document",
+  "add_api_key_alert": "To use the app, you need to add an API key in the settings",
+  "init_error": "Initialization error",
+  "settings": "Settings",
+  "api_key_added": "API key added",
+  "save": "Save",
+  "api_key_placeholder": "API key",
+  "module_instruction": "To use the module, enter the RetailCRM API key. You can get the key in the RetailCRM settings.",
+  "add_documents": "Add documents",
+  "sign_and_send": "Sign and send",
+  "doc_not_sent": "The document was not sent",
+  "remaining_signings": "Remaining signings:"
+} 

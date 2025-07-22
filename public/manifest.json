@@ -1,0 +1,8 @@
+{
+  "code": "podpislon",
+  "version": 1,
+  "targets": ["order/card:delivery.address"],
+  "entrypoint": "index.html",
+  "scripts": ["js/app.js"],
+  "stylesheet": "css/app.css"
+} 

@@ -1,0 +1,14 @@
+{
+  "sign_document": "Подписать документ",
+  "add_api_key_alert": "Для работы приложения необходимо добавить api-ключ в настройках",
+  "init_error": "Ошибка инициализации",
+  "settings": "Настройки",
+  "api_key_added": "API-ключ добавлен",
+  "save": "Сохранить",
+  "api_key_placeholder": "API-ключ",
+  "module_instruction": "Для работы модуля введите API-ключ RetailCRM. Получить ключ можно в настройках RetailCRM.",
+  "add_documents": "Добавление документов",
+  "sign_and_send": "Подписать и отправить",
+  "doc_not_sent": "Документ не был отправлен",
+  "remaining_signings": "Остаток подписей:"
+} 

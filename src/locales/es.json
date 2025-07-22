@@ -1,0 +1,14 @@
+{
+  "sign_document": "Firmar documento",
+  "add_api_key_alert": "Para usar la aplicación, debe agregar una clave API en la configuración",
+  "init_error": "Error de inicialización",
+  "settings": "Configuración",
+  "api_key_added": "Clave API agregada",
+  "save": "Guardar",
+  "api_key_placeholder": "Clave API",
+  "module_instruction": "Para usar el módulo, ingrese la clave API de RetailCRM. Puede obtener la clave en la configuración de RetailCRM.",
+  "add_documents": "Agregar documentos",
+  "sign_and_send": "Firmar y enviar",
+  "doc_not_sent": "El documento no fue enviado",
+  "remaining_signings": "Firmas restantes:"
+} 
