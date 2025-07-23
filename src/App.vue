@@ -1,16 +1,12 @@
 <template>
-  <div>
-    <!-- Кнопка в тулбаре -->
-    <UiToolbarButton :title="$t('sign_document')" @click="openSidebar" />
-    <!-- Сайдбар с дополнительным контентом -->
-    <UiModalSidebar :visible="sidebarVisible" @close="sidebarVisible = false">
-      <div style="padding: 16px;">
-        <h2>{{$t('sidebar_title')}}</h2>
-        <p>{{$t('sidebar_content')}}</p>
-        <UiImage src="https://via.placeholder.com/150" resize="100x100" />
-      </div>
-    </UiModalSidebar>
-  </div>
+  <UiToolbarButton :title="$t('sign_document')" @click="openSidebar" />
+  <UiModalSidebar :visible="sidebarVisible" @close="sidebarVisible = false">
+    <div style="padding: 16px;">
+      <h2>{{$t('sidebar_title')}}</h2>
+      <p>{{$t('sidebar_content')}}</p>
+      <UiImage src="https://via.placeholder.com/150" resize="100x100" />
+    </div>
+  </UiModalSidebar>
 </template>
 
 <script setup>
