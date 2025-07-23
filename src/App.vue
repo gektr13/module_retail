@@ -1,12 +1,9 @@
 <template>
-  <div>
-    <div v-if="errorMsg" style="color: red; margin-bottom: 16px;">
-      {{ errorMsg }}
-      <br />
-      <router-link to="/settings">{{$t('settings')}}</router-link>
-    </div>
-    <component :is="_state.route" />
+  <div style="background: #ffe066; padding: 16px; font-size: 18px;">
+    Подпислон: тестовый модуль для RetailCRM
+    <button @click="someAction">Подписать документ</button>
   </div>
+  <component :is="_state.route" />
 </template>
 
 <script lang="ts">
