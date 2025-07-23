@@ -10,5 +10,7 @@
   "add_documents": "Agregar documentos",
   "sign_and_send": "Firmar y enviar",
   "doc_not_sent": "El documento no fue enviado",
-  "remaining_signings": "Firmas restantes:"
+  "remaining_signings": "Firmas restantes:",
+  "sidebar_title": "Panel lateral",
+  "sidebar_content": "Este es un ejemplo de contenido adicional que se abre al hacer clic en el botón."
 } 

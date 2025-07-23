@@ -1,64 +1,30 @@
 <template>
-    <UiToolbarButton :title="$t('sign_document')" @click="openWiz()"/>
-    <div class="doc-list">
-      <doc-preview-component v-if="hasPhone && loadRes"/>
-    </div>
+  <div>
+    <!-- Кнопка в тулбаре -->
+    <UiToolbarButton :title="$t('sign_document')" @click="openSidebar" />
+    <!-- Сайдбар с дополнительным контентом -->
+    <UiModalSidebar :visible="sidebarVisible" @close="sidebarVisible = false">
+      <div style="padding: 16px;">
+        <h2>{{$t('sidebar_title')}}</h2>
+        <p>{{$t('sidebar_content')}}</p>
+        <UiImage src="https://via.placeholder.com/150" resize="100x100" />
+      </div>
+    </UiModalSidebar>
+  </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onMounted, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import UiToolbarButton from '../components/retailcrm/UiToolbarButton.vue';
-import { state } from '@/store/state';
-import DocPreviewComponent from '@/components/blocks/DocPreviewComponent.vue';
+<script setup>
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import UiToolbarButton from '@/components/retailcrm/UiToolbarButton.vue'
+import UiModalSidebar from '@/components/retailcrm/UiModalSidebar.vue'
+import UiImage from '@/components/retailcrm/UiImage.vue'
 
-export default defineComponent({
-  name: 'MainView',
-  components: {UiToolbarButton, DocPreviewComponent},
-  setup(){
-    const { t } = useI18n();
-    const loadRes = ref<boolean>(false)
-    onMounted(async () => {
-      try {
-        loadRes.value = await LoadAwaitFinc();
-        if(!loadRes.value){
-          alert(t('add_api_key_alert'));
-          // window.location.href = '/settings'; // если нужен переход
-          return;
-        }
-      } catch (e: any) {
-        alert(e.message || t('init_error'));
-        // window.location.href = '/settings'; // если нужен переход
-      }
-    })
-
-    const LoadAwaitFinc = (): Promise<boolean> => {
-      return new Promise((resolve, reject) => {
-        let i = 0;
-        const interval = setInterval(()=>{
-          if(state.apiKey?.length){
-            clearInterval(interval)
-            resolve(true)
-            return;
-          } else if(i > 9){
-            clearInterval(interval)
-            reject(new Error('API-ключ не добавлен')) // Можно добавить локализацию, если нужно
-          }
-          i++;
-        }, 500)
-      })
-    }
-
-    const hasPhone = computed(()=> !!state.client?.phone)
-
-    return {hasPhone, loadRes}
-  },
-  methods:{
-    openWiz(){
-        state.route = 'WizardView'
-    },
-  }
-});
+const { t } = useI18n()
+const sidebarVisible = ref(false)
+function openSidebar() {
+  sidebarVisible.value = true
+}
 </script>
 
 <style scoped>

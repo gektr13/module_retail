@@ -10,5 +10,7 @@
   "add_documents": "Add documents",
   "sign_and_send": "Sign and send",
   "doc_not_sent": "The document was not sent",
-  "remaining_signings": "Remaining signings:"
+  "remaining_signings": "Remaining signings:",
+  "sidebar_title": "Sidebar",
+  "sidebar_content": "This is an example of additional content that opens when you click the button."
 } 
