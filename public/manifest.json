@@ -1,7 +1,7 @@
 {
-  "code": "podpislon",
+  "code": "podpislontest",
   "version": 1,
-  "targets": ["order/card:delivery.address"],
+  "targets": ["order/card:common.after"],
   "entrypoint": "index.html",
   "scripts": ["js/app.js"],
   "stylesheet": "css/app.css"
