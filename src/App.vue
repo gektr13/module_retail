@@ -1,70 +1,30 @@
 <template>
-  <div style="background: #ffe066; padding: 16px; font-size: 18px;">
-    Подпислон: тестовый модуль для RetailCRM
-    <button @click="someAction">Подписать документ</button>
+  <div>
+    <!-- Кнопка в тулбаре -->
+    <UiToolbarButton :title="$t('sign_document')" @click="openSidebar" />
+    <!-- Сайдбар с дополнительным контентом -->
+    <UiModalSidebar :visible="sidebarVisible" @close="sidebarVisible = false">
+      <div style="padding: 16px;">
+        <h2>{{$t('sidebar_title')}}</h2>
+        <p>{{$t('sidebar_content')}}</p>
+        <UiImage src="https://via.placeholder.com/150" resize="100x100" />
+      </div>
+    </UiModalSidebar>
   </div>
-  <component :is="_state.route" />
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
-import MainView from "./views/MainView.vue";
-import WizardView from "./views/WizardView.vue";
-import { state } from "./store/state";
-import SettingsView from "./views/SettingsView.vue";
-import api from "./api/api";
-import slon from "./api/slon";
-// Интеграция с RetailCRM
-import { useOrderCardContext, useSettingsContext } from '@retailcrm/embed-ui';
+<script setup>
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import UiToolbarButton from '@/components/retailcrm/UiToolbarButton.vue'
+import UiModalSidebar from '@/components/retailcrm/UiModalSidebar.vue'
+import UiImage from '@/components/retailcrm/UiImage.vue'
 
-export default defineComponent({
-  name: "App",
-  components: {
-    MainView,
-    WizardView,
-    SettingsView,
-  },
-  setup() {
-    const _state = state;
-    const errorMsg = ref("");
-    // Получаем контекст заказа и настроек из RetailCRM, если приложение встроено
-    let orderContext: any = null;
-    let settingsContext: any = null;
-    try {
-      orderContext = useOrderCardContext?.();
-      settingsContext = useSettingsContext?.();
-      if (orderContext) {
-        _state.order = orderContext.order;
-      }
-      if (settingsContext) {
-        _state.settings = settingsContext.settings;
-      }
-    } catch (e) {
-      // Не встраиваемся в RetailCRM или ошибка получения контекста
-    }
-    // Удалена логика YCLIENTS (salon_id, hash, postMessage)
-    // TODO: добавить инициализацию через RetailCRM (например, получение текущего клиента)
-
-    onMounted(async () => {
-      try {
-        const client = await api.getCurrentClient();
-        if (client && client.id) {
-          _state.client = client;
-        } else {
-          errorMsg.value = "Клиенты не найдены или не удалось получить данные. Проверьте настройки API-ключа.";
-        }
-      } catch (e: any) {
-        errorMsg.value =
-          "Ошибка при получении клиента: " + (e?.message || e);
-      }
-    });
-
-    return {
-      _state,
-      errorMsg
-    };
-  },
-});
+const { t } = useI18n()
+const sidebarVisible = ref(false)
+function openSidebar() {
+  sidebarVisible.value = true
+}
 </script>
 
 <style>
