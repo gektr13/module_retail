@@ -12,5 +12,8 @@
   "doc_not_sent": "El documento no fue enviado",
   "remaining_signings": "Firmas restantes:",
   "sidebar_title": "Panel lateral",
-  "sidebar_content": "Este es un ejemplo de contenido adicional que se abre al hacer clic en el botón."
+  "sidebar_content": "Este es un ejemplo de contenido adicional que se abre al hacer clic en el botón.",
+  "show_field": "Mostrar campo",
+  "custom_field_title": "Campo personalizado",
+  "custom_field_content": "Este es un ejemplo de barra lateral para comprobar el funcionamiento del módulo."
 } 

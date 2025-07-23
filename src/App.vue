@@ -1,10 +1,9 @@
 <template>
-  <UiToolbarButton :title="$t('sign_document')" @click="sidebar = true" />
+  <UiToolbarButton :title="$t('show_field')" @click="sidebar = true" />
   <UiModalSidebar :visible="sidebar" @close="sidebar = false">
     <div style="padding: 16px;">
-      <h2>{{ $t('sidebar_title') }}</h2>
-      <p>{{ $t('sidebar_content') }}</p>
-      <UiImage src="https://via.placeholder.com/150" resize="100x100" />
+      <h2>{{ $t('custom_field_title') }}</h2>
+      <p>{{ $t('custom_field_content') }}</p>
     </div>
   </UiModalSidebar>
 </template>
@@ -14,7 +13,6 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import UiToolbarButton from '@/components/retailcrm/UiToolbarButton.vue'
 import UiModalSidebar from '@/components/retailcrm/UiModalSidebar.vue'
-import UiImage from '@/components/retailcrm/UiImage.vue'
 
 const { t } = useI18n()
 const sidebar = ref(false)

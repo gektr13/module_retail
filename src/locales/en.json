@@ -12,5 +12,8 @@
   "doc_not_sent": "The document was not sent",
   "remaining_signings": "Remaining signings:",
   "sidebar_title": "Sidebar",
-  "sidebar_content": "This is an example of additional content that opens when you click the button."
+  "sidebar_content": "This is an example of additional content that opens when you click the button.",
+  "show_field": "Show field",
+  "custom_field_title": "Custom field",
+  "custom_field_content": "This is a sidebar example to check module operability."
 } 
