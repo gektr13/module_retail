@@ -1,9 +1,9 @@
 <template>
-  <UiToolbarButton :title="$t('sign_document')" @click="openSidebar" />
-  <UiModalSidebar :visible="sidebarVisible" @close="sidebarVisible = false">
+  <UiToolbarButton :title="$t('sign_document')" @click="sidebar = true" />
+  <UiModalSidebar :visible="sidebar" @close="sidebar = false">
     <div style="padding: 16px;">
-      <h2>{{$t('sidebar_title')}}</h2>
-      <p>{{$t('sidebar_content')}}</p>
+      <h2>{{ $t('sidebar_title') }}</h2>
+      <p>{{ $t('sidebar_content') }}</p>
       <UiImage src="https://via.placeholder.com/150" resize="100x100" />
     </div>
   </UiModalSidebar>
@@ -17,10 +17,7 @@ import UiModalSidebar from '@/components/retailcrm/UiModalSidebar.vue'
 import UiImage from '@/components/retailcrm/UiImage.vue'
 
 const { t } = useI18n()
-const sidebarVisible = ref(false)
-function openSidebar() {
-  sidebarVisible.value = true
-}
+const sidebar = ref(false)
 </script>
 
 <style>
