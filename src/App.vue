@@ -1,56 +1,84 @@
 <template>
-  <UiToolbarButton :title="$t('show_field')" @click="sidebar = true" />
-  <UiModalSidebar :visible="sidebar" @close="sidebar = false">
-    <div style="padding: 16px;">
-      <h2>{{ $t('custom_field_title') }}</h2>
-      <p>{{ $t('custom_field_content') }}</p>
-    </div>
-  </UiModalSidebar>
+  <UiToolbarButton @click="opened = true">
+    <IconCalendar class="UiIcon-icon-2pR-" />
+    {{ t('recordToMeeting') }}
+  </UiToolbarButton>
+
+  <UiModalWindow v-model:opened="opened">
+    <template #title>
+      {{ t('recordToMeeting') }}
+    </template>
+
+    <iframe
+        :src="`https://calendly.com/embed-demo-sales/discovery-call?embed_domain=www.calendly-embed.com&embed_type=Inline&name=${firstName}&&email=${email}`"
+        width="100%"
+        height="1200px"
+        frameborder="0"
+    />
+
+    <template #footer>
+      <UiToolbarButton @click="opened = false">
+        {{ t('close') }}
+      </UiToolbarButton>
+    </template>
+  </UiModalWindow>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import UiToolbarButton from '@/components/retailcrm/UiToolbarButton.vue'
-import UiModalSidebar from '@/components/retailcrm/UiModalSidebar.vue'
+<script lang="ts" setup>
 
-const { t } = useI18n()
-const sidebar = ref(false)
+import IconCalendar from  '@retailcrm/embed-ui-v1-components/assets/sprites/actions/calendar-month.svg'
+
+import {
+  UiModalWindow,
+  UiToolbarButton,
+} from '@retailcrm/embed-ui-v1-components/remote'
+
+import { useOrderCardContext as useOrder } from '@retailcrm/embed-ui'
+import { useSettingsContext as useSettings } from '@retailcrm/embed-ui'
+import { useField } from '@retailcrm/embed-ui'
+import { useI18n } from 'vue-i18n'
+
+import { ref, watch } from 'vue'
+
+// set locale
+const settings = useSettings()
+const locale = useField(settings, 'system.locale')
+
+settings.initialize()
+
+const i18n = useI18n()
+const t = i18n.t
+
+watch(locale, locale => i18n.locale.value = locale, { immediate: true })
+
+// init reactive fields
+const order = useOrder()
+const firstName = useField(order, 'customer.firstName')
+const email = useField(order, 'customer.email')
+
+order.initialize()
+
+// data
+const opened = ref(false)
 </script>
 
-<style>
-:root {
-  --main-color: #ffa800;
-  --main-accent: #ffcb00;
-  --lines-color: #e0e3eb;
-  --primary-dark: #71757f;
-  --primary-black: #2b3134;
-  --accent-positive: #29c235;
-  --accent-danger: #f72c32;
+<i18n locale="en-GB">
+{
+  "recordToMeeting": "Record to meeting",
+  "close": "Close"
 }
-* {
-  padding: 0;
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  color: var(--primary-black);
+</i18n>
+
+<i18n locale="es-ES">
+{
+  "recordToMeeting": "Grabar a la reunión",
+  "close": "Cerrar"
 }
-h2 {
-  font-weight: 500;
-  font-size: 20px;
-  text-align: center;
+</i18n>
+
+<i18n locale="ru-RU">
+{
+  "recordToMeeting": "Записать на встречу",
+  "close": "Закрыть"
 }
-#app {
-  padding: 40px 20px;
-  max-width: 375px;
-  font-size: 14px;
-  margin: 0 auto;
-}
-.mb16 {
-  margin-bottom: 16px;
-}
-.doc-title,
-.title {
-  margin-left: 12px;
-}
-</style>
+</i18n>

@@ -5,4 +5,33 @@
   "entrypoint": "index.html",
   "scripts": ["js/app.js"],
   "stylesheet": "css/app.css"
-} 
+}
+
+
+{
+  "code": "my-remote-module",
+  "name": "Remote Test Module",
+  "description": "Тестовый модуль с кнопкой",
+  "version": "1.0.0",
+  "icon": "https://your-server.com/module/public/icon.png",
+  "author": "Your Name",
+  "actions": {
+    "button": {
+      "name": "test-button",
+      "layout": "topmenu",
+      "class": "btn btn-info",
+      "icon": "fa fa-rocket",
+      "title": "Тестовая кнопка",
+      "action": "showTestModal"
+    }
+  },
+  "integration": true,
+  "baseUrl": "https://your-server.com/module/public/",
+  "configuration": {
+    "account_url": {
+      "type": "string",
+      "name": "URL аккаунта RetailCRM",
+      "required": true
+    }
+  }
+}
